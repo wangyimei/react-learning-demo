@@ -33,3 +33,30 @@ React 会将元素和它的子元素与它们之前的状态进行比较，只�
 1. 创建一个同名的 ES6 Class，并继承于`React.Component`,
 2. 将函数体的内容（即`return`）放在`render`方法中,
 3. 在`render`方法中使用`this.props`替换`props`.
+
+### 正确的使用state
+1. 不要直接修改`state`,而是使用`setState`,构造函数是唯一可以给`this.state`赋值的地方。
+```
+// wrong
+this.state.comment = 'hello';
+
+// correct
+this.setState({
+    comment: 'hello'
+});
+```
+2. State的更新可能是异步的
+为了提升性能，React 可能会把多个`setState`调用合并成一个。`this.state`和`this.props`的值都是异步更新的，所以不能依赖它们的值更新下一个状态的`state`。
+```
+// wrong
+this.setState({
+    count: this.state.count + this.props.increment
+})
+
+//correct
+this.setState((state, props) => ({
+    count: state.count + props.increment
+}));
+```
+3. State的更新会被合并
+当你调用`setState()`的时候，React 会把提供的对象合并到当前的对象中。
