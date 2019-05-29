@@ -15,6 +15,7 @@
                     this.state = {
                         date: new Date()
                     };
+                    this.clickButton = this.clickButton.bind(this);
                 }
                 componentDidMount() {
                     this.timerID = setInterval(
@@ -30,10 +31,18 @@
                         date: new Date()
                     });
                 }
+                handle(e) {
+                    console.log('this is:', this);
+                }
+                clickButton() {
+                    console.log('click button', this);
+                }
                 render() {
                     return (
                         <div>
                             <p>It is {this.state.date.toLocaleTimeString()}</p>
+                            <button onClick={(e) => this.handle(e)}>click me</button>
+                            <button><a onClick={this.clickButton}>aaa</a></button>
                         </div>
                     )
                 }
