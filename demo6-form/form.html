@@ -22,6 +22,7 @@
                     this.input = React.createRef();
                 }
                 handleChange(e) {
+                    console.log(e.target, e.target.nodeType, e.target.nodeName, e.target.nodeValue);
                     this.setState({value: e.target.value});
                 }
                 submitForm(event) {
@@ -31,14 +32,15 @@
                 }
                 handleClick(e) {
                     console.log(e.target);
-                    console.log(e.target.nodeType);
-                    console.log(e.target.firstChild);
+                    console.log(e.target.nodeType, e.target.nodeName);
+                    console.log(e.target.firstChild, e.target.firstChild.nodeType, e.target.firstChild.nodeName, e.target.firstChild.nodeValue);
                     console.log(e.target.innerHTML);
                 }
                 render() {
                     return (
                         <form onSubmit={this.submitForm}>
                             <p onClick={this.handleClick} name="test">123</p>
+                            123
                             <input type="text" value={this.state.value} onChange={this.handleChange} />
                             <hr />
                             <input type="text" value='hi' readOnly />
