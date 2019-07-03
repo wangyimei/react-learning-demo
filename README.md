@@ -72,3 +72,10 @@ this.setState((state, props) => ({
 
 ### key只是在兄弟节点之间必须唯一
 数组元素中的`key`在其兄弟节点之间必须是唯一的，但不需要全局唯一。当我们创建两个不同的数组节点时，可以使用相同的`key`值。
+
+# 路由
+路由配置[router](https://github.com/wangyimei/react-learning-demo/tree/master/demo1/src/router)
+
+# Redux 
+状态管理学习[counter](https://github.com/wangyimei/react-learning-demo/tree/master/demo1/src/store).demo1中counter例子。
+
