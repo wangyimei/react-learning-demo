@@ -6,8 +6,8 @@ import Game from '../components/game/game';
 const BasicRouter = () => (
     <HashRouter>
         <Switch>
-            <Route exact path='/' component={Counter} />
-            <Route exact path='/game' component={Game} />
+            <Route exact path='/count' component={Counter} />
+            <Route exact path='/' component={Game} />
         </Switch>
     </HashRouter>
 );
