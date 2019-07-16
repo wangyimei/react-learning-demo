@@ -79,3 +79,16 @@ this.setState((state, props) => ({
 # Redux 
 状态管理学习[counter](https://github.com/wangyimei/react-learning-demo/tree/master/demo1/src/store).demo1中counter例子。
 
+## action
+action是把数据传从应用传到store的载体。它是store数据的唯一来源，一般通过`store.dispatch()`将action传到store。
+
+## reducer
+`reducer`就是一个纯函数，接收旧的`state`和`action`,返回新的`state`。`reducer`一定要保持纯净。只要传入的参数相同，返回计算得到的下一个`state`就一定相同。没有特殊情况、没有副作用、没有API请求、没有变量修改、单纯执行计算。
+
+## store
+`store`能维持应用的`state`，并在发起`action`的时候调用`reducer`。`store`是把它们联系到一起的对象。Store的职责有：
+- 维持应用的`state`
+- 提供`getState()`方法获取`state`
+- 提供`dispatch()`方法更新`state`
+- 通过`subscribe(listener)`注册监听器
+- 通过`subscribe(listener)`返回的函数注销监听器
