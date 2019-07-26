@@ -78,12 +78,17 @@ this.setState((state, props) => ({
 
 # Redux 
 状态管理学习[counter](https://github.com/wangyimei/react-learning-demo/tree/master/demo1/src/store).demo1中counter例子。
+在 Redux 应用中，所有的 state 都被保存在一个单一对象中。
 
 ## action
-action是把数据从应用传到store的载体。它是store数据的唯一来源，一般通过`store.dispatch()`将action传到store。
+> action是把数据从应用传到store的载体。它是store数据的唯一来源，一般通过`store.dispatch()`将action传到store。
+
+`action`用于描述（定义）一系列应用中的可以触发`state`变化的操作。
 
 ## reducer
-`reducer`就是一个纯函数，接收旧的`state`和`action`,返回新的`state`。`reducer`一定要保持纯净。只要传入的参数相同，返回计算得到的下一个`state`就一定相同。没有特殊情况、没有副作用、没有API请求、没有变量修改、单纯执行计算。
+> `reducer`就是一个纯函数，接收旧的`state`和`action`,返回新的`state`。`reducer`一定要保持纯净。只要传入的参数相同，返回计算得到的下一个`state`就一定相同。没有特殊情况、没有副作用、没有API请求、没有变量修改、单纯执行计算。
+
+`reducer`用于描述（处理）`action`中定义的操作触发后应用如何改变`state`。简单说就是`reducer`用于处理应用的`state`的更新或者变化。
 
 ## store
 `store`能维持应用的`state`，并在发起`action`的时候调用`reducer`。`store`是把它们联系到一起的对象。Store的职责有：
@@ -94,4 +99,9 @@ action是把数据从应用传到store的载体。它是store数据的唯一来�
 - 通过`subscribe(listener)`返回的函数注销监听器
 
 ## 数据流
-Store会把两个参数传入`reducer`：当前的`state`树和`action`
+严格的单向数据流是Redux架构的设计核心。
+Redux应用中数据的生命周期遵循以下4个步骤：
+1. 调用`store.dispatch(action)`,可以在任意地方调用该方法;
+2. Redux store调用传入的`reducer`,Store会把两个参数传入`reducer`：当前的`state`树和`action`。
+3. 根`reducer`应该把多个子`reducer`输出合并成一个单一的`state`树；
+4. Redux Store 保存了根`reducer`返回的完整的`state`树。
